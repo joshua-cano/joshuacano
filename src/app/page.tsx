@@ -60,7 +60,6 @@ export default function Home() {
           <Mail size={20} />
         </div>
       </div>
-
       <div className="mx-auto max-w-screen-lg px-8 py-8">
         <h2 className="text-2xl font-semibold">Technologies I use at work</h2>
         <p className="text-muted-foreground">
