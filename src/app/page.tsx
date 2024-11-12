@@ -37,7 +37,6 @@ export default function Home() {
   return (
     <div>
       <Header />
-
       <div className="mx-auto flex max-w-screen-lg flex-col items-center justify-center space-y-8 pb-16 pt-28">
         <header className="space-y-2 text-center">
           <p className="text-xs font-semibold uppercase tracking-wider">
