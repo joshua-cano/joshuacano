@@ -1,5 +1,6 @@
+"use client";
+
 import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,13 +32,46 @@ import {
 } from "react-icons/si";
 import { RiNextjsFill } from "react-icons/ri";
 import { TbSql } from "react-icons/tb";
-import { Contact } from "@/components/contact";
+import { useRef } from "react";
+import Link from "next/link";
 
 export default function Home() {
+  const myRef = useRef<HTMLElement | null>(null);
+  const contactRef = useRef<HTMLElement | null>(null);
+
   return (
     <div>
-      <Header />
-      <div className="mx-auto flex max-w-screen-lg flex-col items-center justify-center space-y-8 pb-16 pt-28">
+      <header className="sticky top-5 mx-auto flex max-w-fit items-center justify-center gap-4 rounded-full border bg-primary-foreground px-6 text-sm shadow-sm sm:gap-6 sm:text-base">
+        <Link className="py-3" href="/">
+          Home
+        </Link>
+        <Link
+          className="py-3"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            myRef.current?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+        >
+          Work
+        </Link>
+        <Link
+          className="py-3"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            contactRef.current?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+        >
+          Contact
+        </Link>
+      </header>
+
+      <section className="mx-auto flex max-w-screen-lg flex-col items-center justify-center space-y-8 pb-16 pt-28">
         <header className="space-y-2 text-center">
           <p className="text-xs font-semibold uppercase tracking-wider">
             Based in Texas
@@ -46,21 +80,38 @@ export default function Home() {
           <p className="text-lg">8+ years as a Full Stack Developer</p>
         </header>
         <div className="flex gap-3">
-          <Button>
+          <Button
+            onClick={() =>
+              myRef.current?.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+          >
             <span>See My Work </span>
             <ChevronRight />
           </Button>
-          <Button variant="outline">
-            Resume <Download />
+          <Button variant="outline" asChild>
+            <a href="/resume.pdf" target="_blank">
+              Resume <Download />
+            </a>
           </Button>
         </div>
         <div className="flex gap-5">
-          <FaLinkedin size={20} />
-          <FaGithub size={20} />
-          <Mail size={20} />
+          <a
+            href="https://www.linkedin.com/in/joshua-cano-dev/"
+            target="_blank"
+          >
+            <FaLinkedin size={20} />
+          </a>
+          <a href="https://github.com/joshua-cano" target="_blank">
+            <FaGithub size={20} />
+          </a>
+          <a href="mailto:joshua@joshuacano.com">
+            <Mail size={20} />
+          </a>
         </div>
-      </div>
-      <div className="mx-auto max-w-screen-lg px-8 py-8">
+      </section>
+      <section className="mx-auto max-w-screen-lg px-8 py-8">
         <h2 className="text-2xl font-semibold">Technologies I use at work</h2>
         <p className="text-muted-foreground">
           I&apos;m proficient in a range of modern technologies that empower me
@@ -86,9 +137,8 @@ export default function Home() {
             <TechCard key={index} icon={tech.icon} title={tech.title} />
           ))}
         </div>
-      </div>
-
-      <div className="mx-auto mt-8 max-w-screen-lg px-8">
+      </section>
+      <section className="mx-auto mt-8 max-w-screen-lg px-8" ref={myRef}>
         <h2 className="text-2xl font-semibold">Featured Projects</h2>
         <Card className="mt-8">
           <CardHeader>
@@ -129,8 +179,18 @@ export default function Home() {
             </Button>
           </CardFooter>
         </Card>
-      </div>
-      <Contact />
+      </section>
+      <section
+        className="mx-auto max-w-screen-lg space-y-8 px-8 py-16"
+        ref={contactRef}
+      >
+        <h2 className="max-w-2xl text-xl font-semibold">
+          Like what you see? Reach out via email!
+        </h2>
+        <Button asChild>
+          <a href="mailto:joshua@joshuacano.com">Email Me</a>
+        </Button>
+      </section>
       <Footer />
     </div>
   );
