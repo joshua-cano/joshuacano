@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${geist.variable} font-sans antialiased`}>
+      <body className={`${geistSans.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
