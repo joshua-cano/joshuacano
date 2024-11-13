@@ -114,11 +114,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-screen-lg px-8 py-8">
         <h2 className="text-2xl font-semibold">Technologies I use at work</h2>
-        <p className="text-muted-foreground">
-          I&apos;m proficient in a range of modern technologies that empower me
-          to build highly functional solutions. These are some of my main
-          technologies
-        </p>
+
         <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {techWorkData.map((tech, index) => (
             <TechCard key={index} icon={tech.icon} title={tech.title} />
@@ -128,11 +124,6 @@ export default function Home() {
         <h2 className="mt-8 text-2xl font-semibold">
           Additional technologies I use in my freetime
         </h2>
-        <p className="text-muted-foreground">
-          I&apos;m proficient in a range of modern technologies that empower me
-          to build highly functional solutions. These are some of my main
-          technologies
-        </p>
         <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
           {techFunData.map((tech, index) => (
             <TechCard key={index} icon={tech.icon} title={tech.title} />
