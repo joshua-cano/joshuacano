@@ -223,7 +223,6 @@ const techFunData = [
 const TechCard = ({
   icon: Icon,
   title,
-  brandColor,
 }: {
   icon: IconType;
   title: string;
