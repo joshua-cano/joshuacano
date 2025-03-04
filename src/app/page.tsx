@@ -36,13 +36,23 @@ import { useRef } from "react";
 import Link from "next/link";
 
 export default function Home() {
+  const homeRef = useRef<HTMLElement | null>(null);
   const myRef = useRef<HTMLElement | null>(null);
   const contactRef = useRef<HTMLElement | null>(null);
 
   return (
     <div>
       <header className="sticky top-5 mx-auto flex max-w-fit items-center justify-center gap-4 rounded-full border bg-primary-foreground px-6 text-sm shadow-sm sm:gap-6 sm:text-base">
-        <Link className="py-3" href="/">
+        <Link
+          className="py-3"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            homeRef.current?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+        >
           Home
         </Link>
         <Link
@@ -71,48 +81,52 @@ export default function Home() {
         </Link>
       </header>
 
-      <section className="mx-auto flex max-w-screen-lg flex-col items-center justify-center space-y-8 pb-16 pt-28">
+      <section
+        className="mx-auto flex max-w-screen-lg flex-col items-center justify-center space-y-8 pb-16 pt-28"
+        ref={homeRef}
+      >
         <header className="space-y-2 text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider">
+          <p className="text-xs font-semibold uppercase tracking-wider text-foreground/90">
             Based in Texas
           </p>
-          <p className="text-5xl font-semibold">Joshua Cano</p>
-          <p className="text-lg">8+ years as a Full Stack Developer</p>
+          <h1 className="text-5xl font-semibold">Joshua Cano</h1>
+          <p className="text-lg">8+ years as a Front End Software Engineer</p>
         </header>
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
           <Button
             onClick={() =>
               myRef.current?.scrollIntoView({
                 behavior: "smooth",
               })
             }
+            className="gap-1"
           >
-            <span>See My Work </span>
+            <span>See My Work</span>
             <ChevronRight />
           </Button>
-          <Button variant="outline" asChild>
+          <Button variant="ghost" asChild>
             <a href="/resume.pdf" target="_blank">
               Resume <Download />
             </a>
           </Button>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-8">
           <a
             href="https://www.linkedin.com/in/joshua-cano-dev/"
             target="_blank"
           >
-            <FaLinkedin size={20} />
+            <FaLinkedin size={25} />
           </a>
           <a href="https://github.com/joshua-cano" target="_blank">
-            <FaGithub size={20} />
+            <FaGithub size={25} />
           </a>
           <a href="mailto:joshua@joshuacano.com">
-            <Mail size={20} />
+            <Mail size={25} />
           </a>
         </div>
       </section>
 
-      <section className="mx-auto max-w-screen-lg px-8 py-8">
+      <section className="mx-auto max-w-screen-lg p-4 md:p-8">
         <h2 className="text-2xl font-semibold">Technologies I use at work</h2>
 
         <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -130,16 +144,16 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="mx-auto mt-8 max-w-screen-lg px-8" ref={myRef}>
+      <section className="mx-auto mt-8 max-w-screen-lg p-4 md:p-8" ref={myRef}>
         <h2 className="text-2xl font-semibold">Featured Projects</h2>
-        <Card className="mt-8">
-          <CardHeader>
+        <Card className="mt-8 pt-0 overflow-clip">
+          <CardHeader className="p-0">
             <a
               href="https://project-tracking-app-lb3e.vercel.app/"
               target="_blank"
-              className="rounded-lg bg-muted/15 p-4"
+              className=""
             >
-              <Image src={project} alt="picture" className="w-full" />
+              <Image src={project} alt="project thumbnail" className="w-full" />
             </a>
           </CardHeader>
           <CardContent className="flex flex-col gap-2">
@@ -173,7 +187,7 @@ export default function Home() {
         </Card>
       </section>
       <section
-        className="mx-auto max-w-screen-lg space-y-8 px-8 py-16"
+        className="mx-auto max-w-screen-lg space-y-8 p-4 md:px-8 md:py-16"
         ref={contactRef}
       >
         <h2 className="max-w-2xl text-xl font-semibold">
@@ -206,15 +220,23 @@ const techFunData = [
   { icon: SiPostgresql, title: "Postgres" },
 ];
 
-const TechCard = ({ icon: Icon, title }: { icon: IconType; title: string }) => {
+const TechCard = ({
+  icon: Icon,
+  title,
+  brandColor,
+}: {
+  icon: IconType;
+  title: string;
+  brandColor?: string;
+}) => {
   return (
-    <div className="flex flex-1 items-center gap-3 rounded-lg bg-secondary p-3">
-      <div className="rounded-md bg-cyan-400/20 p-3">
-        <Icon size={30} />
+    <div
+      className={`flex flex-1 items-center gap-2 md:gap-3 rounded-lg border border-accent/50 p-3`}
+    >
+      <div className="rounded-md p-3">
+        <Icon className="size-5 sm:size-8" />
       </div>
-      <div>
-        <p>{title}</p>
-      </div>
+      <p className="text-xs sm:text-sm md:text-base">{title}</p>
     </div>
   );
 };
