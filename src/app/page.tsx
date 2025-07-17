@@ -90,7 +90,7 @@ export default function Home() {
             Based in Texas
           </p>
           <h1 className="text-5xl font-semibold">Joshua Cano</h1>
-          <p className="text-lg">8+ years as a Front End Software Engineer</p>
+          <p className="text-lg">9+ years as a Front End Software Engineer</p>
         </header>
         <div className="flex gap-3 items-center">
           <Button
@@ -230,7 +230,7 @@ const TechCard = ({
 }) => {
   return (
     <div
-      className={`flex flex-1 items-center gap-2 md:gap-3 rounded-lg border border-accent/50 p-3`}
+      className={`flex flex-1 items-center gap-2 md:gap-3 rounded-lg border border-accent/50 p-3 hover:bg-accent/40 transition`}
     >
       <div className="rounded-md p-3">
         <Icon className="size-5 sm:size-8" />
