@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChevronRight, Download, Globe, Mail } from "lucide-react";
+import { ChevronRight, Globe, Mail } from "lucide-react";
 import Image from "next/image";
 import project from "../../public/project-tracking-screenshot.png";
 import {
@@ -103,11 +103,6 @@ export default function Home() {
           >
             <span>See My Work</span>
             <ChevronRight />
-          </Button>
-          <Button variant="ghost" asChild>
-            <a href="/resume.pdf" target="_blank">
-              Resume <Download />
-            </a>
           </Button>
         </div>
         <div className="flex gap-8">
@@ -230,7 +225,7 @@ const TechCard = ({
 }) => {
   return (
     <div
-      className={`flex flex-1 items-center gap-2 md:gap-3 rounded-lg border border-accent/50 p-3 hover:bg-accent/40 transition`}
+      className={`flex flex-1 items-center gap-2 md:gap-3 rounded-lg border border-accent/50 p-3 hover:bg-gray-900 transition`}
     >
       <div className="rounded-md p-3">
         <Icon className="size-5 sm:size-8" />
