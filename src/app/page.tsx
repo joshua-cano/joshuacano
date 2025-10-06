@@ -13,6 +13,7 @@ import {
 import { ChevronRight, Globe, Mail } from "lucide-react";
 import Image from "next/image";
 import project from "../../public/project-tracking-screenshot.png";
+import ffproject from "../../public/fantasy-football.png";
 import {
   FaGitAlt,
   FaGithub,
@@ -144,6 +145,39 @@ export default function Home() {
         <Card className="mt-8 pt-0 overflow-clip">
           <CardHeader className="p-0">
             <a
+              href="https://ff-five-beige.vercel.app/"
+              target="_blank"
+              className=""
+            >
+              <Image
+                src={ffproject}
+                alt="project thumbnail"
+                className="w-full"
+              />
+            </a>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <CardTitle>Sleeper Fantasy Football Insights</CardTitle>
+            <CardDescription className="text-sm">
+              A comprehensive fantasy football analytics dashboard built with
+              Next.js 15 that provides detailed insights for Sleeper fantasy
+              football leagues.
+            </CardDescription>
+          </CardContent>
+          <CardFooter className="flex gap-2">
+            <Button asChild>
+              <a href="https://ff-five-beige.vercel.app/" target="_blank">
+                Website
+                <Globe />
+              </a>
+            </Button>
+            {/* <Button variant="outline" asChild>
+            </Button> */}
+          </CardFooter>
+        </Card>
+        <Card className="mt-8 pt-0 overflow-clip">
+          <CardHeader className="p-0">
+            <a
               href="https://project-tracking-app-lb3e.vercel.app/"
               target="_blank"
               className=""
@@ -209,7 +243,7 @@ const techWorkData = [
 ];
 
 const techFunData = [
-  { icon: RiNextjsFill, title: "NextJS" },
+  { icon: RiNextjsFill, title: "Next.js" },
   { icon: SiTailwindcss, title: "Tailwind" },
   { icon: FaNode, title: "NodeJS" },
   { icon: SiPostgresql, title: "Postgres" },
